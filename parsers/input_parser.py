@@ -14,8 +14,8 @@ def parse_input() -> Tuple[Dict[str, City], List[Flight]]:
         city = parse_city()
         city_map[city.code] = city
     m : int = int(readline())
-    for _ in range(m):
-        flight_list.append(parse_flight())
+    for i in range(m):
+        flight_list.append(parse_flight(i+1))
     return city_map, flight_list
 
 
@@ -33,8 +33,8 @@ def parse_city() -> City:
 def readline() -> str:
     return sys.stdin.readline().strip()
 
-def parse_flight() -> Flight:
+def parse_flight(id) -> Flight:
     flight_info = readline()
     day, departure_city, arrival_city, departure_time, arrival_time, cost = flight_info.split(' ')
     cost = int(cost)
-    return Flight(day, departure_city, arrival_city, departure_time, arrival_time, cost)
+    return Flight(id, day, departure_city, arrival_city, departure_time, arrival_time, cost)
