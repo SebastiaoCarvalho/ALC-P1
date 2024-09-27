@@ -6,7 +6,7 @@ from pysat.card import CardEnc, EncType
 
 class ArrivalEncoder(Encoder) :
 
-    def encode(self, solver : RC2, flight_list : list[Flight], city_dict: tuple[dict[str, City]], var_count: int) -> None :
+    def encode(self, solver : RC2, flight_list : list[Flight], city_dict: dict[str, City], var_count: int) -> None :
         print("ArrivalEncoder")
         for city in city_dict.keys():
             lits = [flight.get_id() for flight in flight_list if flight.get_arrival_city() == city]

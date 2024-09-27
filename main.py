@@ -35,10 +35,12 @@ var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 encoder = SoftEncoder()
 var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
+
 solution = solver.compute()
+print(solution)
 if solution != None:
     for i in range(0, len(flight_list)):
         if solution[i] > 0:
-            print(flight_list[i - 1])
+            print(flight_list[i])
 else:
     print("No solution found")

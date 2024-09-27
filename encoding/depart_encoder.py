@@ -6,7 +6,7 @@ from pysat.card import CardEnc, EncType
 
 class DepartEncoder(Encoder) :
 
-    def encode(self, solver : RC2, flight_list : list[Flight], city_dict: tuple[dict[str, City]], var_count: int) -> int :
+    def encode(self, solver : RC2, flight_list : list[Flight], city_dict: dict[str, City], var_count: int) -> int :
         print("DepartEncoder")
         for city in city_dict.keys():
             lits = [flight.get_id() for flight in flight_list if flight.get_departure_city() == city]
