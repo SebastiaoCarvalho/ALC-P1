@@ -23,6 +23,9 @@ class Flight :
     
     def get_arrival_city(self) -> str:
         return self.arrival_city    
+    
+    def get_cost(self) -> int:
+        return self.cost
 
     def __repr__(self) -> str:
         return f"{self.id} {self.day} {self.departure_city} {self.arrival_city} {self.departure_time} {self.arrival_time} {self.cost}"

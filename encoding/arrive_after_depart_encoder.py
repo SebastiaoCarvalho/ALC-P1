@@ -7,6 +7,7 @@ from pysat.card import CardEnc, EncType
 class ArriveAfterDepartEncoder(Encoder) :
 
     def encode(self, solver : RC2, flight_list : list[Flight], city_dict: dict[str, City], var_count: int) -> int :
+        print("ArriveAfterDepartEncoder")
         for city in city_dict.keys():
             if city_dict[city].is_base_city():
                 continue
@@ -14,5 +15,7 @@ class ArriveAfterDepartEncoder(Encoder) :
             arrive_lits = [flight.get_id() for flight in flight_list if flight.get_arrival_city() == city]
             for depart_lit in depart_lits:
                 for arrive_lit in arrive_lits:
-                    solver.add_clause([-depart_lit, -arrive_lit]) # if departed from city, then cannot arrive again at city
+                    if (flight_list[arrive_lit - 1].get_day() > flight_list[depart_lit - 1].get_day()):
+                        print(f"add clause ¬{flight_list[depart_lit]} ∨ ¬{flight_list[arrive_lit]}")
+                        solver.add_clause([-depart_lit, -arrive_lit]) # if departed from city, then cannot arrive again at city
         return var_count
