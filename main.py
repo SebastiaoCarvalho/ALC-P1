@@ -20,8 +20,8 @@ var_counter = encoder.encode(solver, flight_list, city_map, len(flight_list))
 encoder = ArrivalEncoder()
 var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
-#encoder = StayNDaysEncoder()
-#var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
+encoder = StayNDaysEncoder()
+var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
 encoder = ArriveAfterDepartEncoder()
 var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
