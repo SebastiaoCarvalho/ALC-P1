@@ -13,17 +13,17 @@ class ArrivalEncoder(Encoder) :
             enc = CardEnc.equals(lits, bound=1, top_id=var_count, encoding=EncType.seqcounter)
             for clause in enc.clauses:
                 solver.add_clause(clause)
-                string = ""
-                for lit in clause:
+                # string = ""
+                # for lit in clause:
                         
-                    if lit < 0:
-                        string += "¬"
-                    if abs(lit) > len(flight_list):
-                        string += "aux" + str(abs(lit) - len(flight_list)) + " ∨ "
-                    else:
-                        string += str(flight_list[abs(lit) - 1]) + " ∨ "
-                if string != "":
-                    print(string[:-3])
+                #     if lit < 0:
+                #         string += "¬"
+                #     if abs(lit) > len(flight_list):
+                #         string += "aux" + str(abs(lit) - len(flight_list)) + " ∨ "
+                #     else:
+                #         string += str(flight_list[abs(lit) - 1]) + " ∨ "
+                # if string != "":
+                #     print(string[:-3])
             var_count += len(lits) - 1
         return var_count
     
