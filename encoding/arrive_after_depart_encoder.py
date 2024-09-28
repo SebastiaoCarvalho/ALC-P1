@@ -16,6 +16,6 @@ class ArriveAfterDepartEncoder(Encoder) :
             for depart_lit in depart_lits:
                 for arrive_lit in arrive_lits:
                     if (flight_list[arrive_lit - 1].get_day() > flight_list[depart_lit - 1].get_day()):
-                        print(f"add clause ¬{flight_list[depart_lit]} ∨ ¬{flight_list[arrive_lit]}")
+                        print(f"add clause ¬{flight_list[arrive_lit - 1]} ∨ ¬{flight_list[depart_lit - 1]}")
                         solver.add_clause([-depart_lit, -arrive_lit]) # if departed from city, then cannot arrive again at city
         return var_count
