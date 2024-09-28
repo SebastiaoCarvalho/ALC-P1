@@ -1,4 +1,5 @@
 from parsers.input_parser import parse_input
+from parsers.output_parser import parse_output
 from pysat.examples.rc2 import RC2
 from pysat.formula import WCNF
 from encoding.depart_encoder import DepartEncoder
@@ -37,10 +38,7 @@ var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
 
 solution = solver.compute()
-print(solution)
 if solution != None:
-    for i in range(0, len(flight_list)):
-        if solution[i] > 0:
-            print(flight_list[i])
+    parse_output(solution, flight_list, city_map)
 else:
     print("No solution found")

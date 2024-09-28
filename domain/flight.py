@@ -24,6 +24,9 @@ class Flight :
     def get_arrival_city(self) -> str:
         return self.arrival_city    
     
+    def get_departure_time(self) -> str:
+        return self.departure_time
+
     def get_cost(self) -> int:
         return self.cost
 

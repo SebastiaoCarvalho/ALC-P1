@@ -8,6 +8,9 @@ class City :
     def __repr__(self) -> str:
         return f"{self.name} {self.code} {self.num_nights}"
     
+    def get_name(self) -> str:
+        return self.name
+
     def get_nights(self) -> int:
         return self.num_nights
 
