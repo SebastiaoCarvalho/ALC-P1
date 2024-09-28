@@ -11,4 +11,4 @@ def parse_output(solution : list[int], flight_list : list[Flight], city_dict : d
     return
 
 def parse_flight(flight : Flight, city_dict : dict[str, City]):
-    return f"{flight.get_day()} {city_dict[flight.get_departure_city()].get_name()} {city_dict[flight.get_arrival_city()].get_name()} {flight.get_departure_time()} {flight.get_cost()}"
+    return f"{flight.convert_day_to_output()} {city_dict[flight.get_departure_city()].get_name()} {city_dict[flight.get_arrival_city()].get_name()} {flight.get_departure_time()} {flight.get_cost()}"

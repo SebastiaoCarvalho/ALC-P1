@@ -29,6 +29,9 @@ class Flight :
 
     def get_cost(self) -> int:
         return self.cost
+    
+    def convert_day_to_output(self) -> str:
+        return self.day.strftime("%d/%m")
 
     def __repr__(self) -> str:
         return f"{self.id} {self.day} {self.departure_city} {self.arrival_city} {self.departure_time} {self.arrival_time} {self.cost}"

@@ -11,10 +11,10 @@ class EndInBaseEncoder(Encoder):
             if not city_dict[city].is_base_city():
                 continue
             arrive_lits = [flight.get_id() for flight in flight_list if flight.get_arrival_city() == city]
-            total_lits  = [flight.get_id() for flight in flight_list]
+            total_lits  = [flight.get_id() for flight in flight_list if flight.get_arrival_city() != city]
             for arrive_lit in arrive_lits:
                 for lit in total_lits:
-                    if flight_list[arrive_lit - 1].get_day() <= flight_list[lit - 1].get_day() and lit != arrive_lit:
+                    if flight_list[arrive_lit - 1].get_day() <= flight_list[lit - 1].get_day():
                         #print(f"add clause ¬{flight_list[arrive_lit - 1]} ∨ ¬{flight_list[lit - 1]}")
                         solver.add_clause([-arrive_lit, -lit])
         return var_count

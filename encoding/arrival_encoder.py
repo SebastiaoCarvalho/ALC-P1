@@ -24,6 +24,6 @@ class ArrivalEncoder(Encoder) :
                 #         string += str(flight_list[abs(lit) - 1]) + " ∨ "
                 # if string != "":
                 #     print(string[:-3])
-            var_count += len(lits) - 1
+            var_count = max(abs(literal) for clause in enc.clauses for literal in clause)
         return var_count
     
