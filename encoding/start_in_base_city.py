@@ -16,6 +16,7 @@ class StartInBaseCity(Encoder):
             for depart_lit in depart_lits:
                 for lit in total_lits:
                     if flight_list[lit - 1].get_day() <= flight_list[depart_lit - 1].get_day():
+                        #print([-lit, -depart_lit])
                         #print(f"add clause ¬{flight_list[lit - 1]} ∨ ¬{flight_list[depart_lit - 1]}")
                         solver.add_clause([-lit, -depart_lit])
         return var_count

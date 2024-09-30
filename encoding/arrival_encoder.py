@@ -12,6 +12,7 @@ class ArrivalEncoder(Encoder) :
             lits = [flight.get_id() for flight in flight_list if flight.get_arrival_city() == city]
             enc = CardEnc.equals(lits, bound=1, top_id=var_count, encoding=EncType.seqcounter)
             for clause in enc.clauses:
+                #print(clause)
                 solver.add_clause(clause)
                 # string = ""
                 # for lit in clause:

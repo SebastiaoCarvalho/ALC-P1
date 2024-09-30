@@ -15,6 +15,7 @@ class EndInBaseEncoder(Encoder):
             for arrive_lit in arrive_lits:
                 for lit in total_lits:
                     if flight_list[arrive_lit - 1].get_day() <= flight_list[lit - 1].get_day():
+                        #print([-arrive_lit, -lit])
                         #print(f"add clause ¬{flight_list[arrive_lit - 1]} ∨ ¬{flight_list[lit - 1]}")
                         solver.add_clause([-arrive_lit, -lit])
         return var_count
