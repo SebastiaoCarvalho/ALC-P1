@@ -5,7 +5,7 @@ class Flight :
     def __init__(self, id, day_str, departure_city, arrival_city, departure_time, arrival_time, cost) -> None:
         self.id = id 
         day, month = day_str.split('/')
-        self.day = date(2024, int(month), int(day))
+        self.day = date(2023, int(month), int(day))
         self.departure_city = departure_city
         self.arrival_city = arrival_city
         self.departure_time = departure_time

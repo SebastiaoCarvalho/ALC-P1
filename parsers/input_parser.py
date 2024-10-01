@@ -35,6 +35,6 @@ def readline() -> str:
 
 def parse_flight(id) -> Flight:
     flight_info = readline()
-    day, departure_city, arrival_city, departure_time, arrival_time, cost = flight_info.split(' ')
+    day, departure_city, arrival_city, departure_time, arrival_time, cost = flight_info.split()
     cost = int(cost)
     return Flight(id, day, departure_city, arrival_city, departure_time, arrival_time, cost)
