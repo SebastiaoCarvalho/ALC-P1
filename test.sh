@@ -16,9 +16,9 @@ for file in "${file_base[@]}"; do
 
     if diff $file_out $file_out_test; then
         duration=$SECONDS
-        echo "Test passed after $((duration / 60))m $((duration % 60))s"
+        echo -e "\e[32mTEST PASSED\e[0m : $((duration / 60))m $((duration % 60))s"
     else
-        echo "Test failed"
+        echo "\e[31mTest failed\e[0m"
     fi
 
 done
