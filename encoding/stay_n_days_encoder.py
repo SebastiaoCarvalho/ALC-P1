@@ -24,6 +24,5 @@ class StayNDaysEncoder(Encoder) :
                         solver.add_clause([-arrival.get_id(), -depart.get_id()]) # can only fly to other city after exactly n nights
                     else :
                         disjunction.append(depart.get_id())
-                if disjunction != [-arrival.get_id()]:
-                    solver.add_clause(disjunction)
+                solver.add_clause(disjunction)
         return var_count
