@@ -1,7 +1,7 @@
 #!/bin/bash
 
 run_command="python3 project1.py"
-test_folder="public_tests"
+test_folder="public-tests"
 
 declare -a file_base=("t01" "t02" "t03" "t04" "t05" "t06" "t07" "t08" "t09" "t10" "t11" "t12" "t13" "t14" "t15" "t16")
 
