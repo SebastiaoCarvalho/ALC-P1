@@ -14,11 +14,12 @@ for file in "${file_base[@]}"; do
     SECONDS=0    
     $run_command < $file_in > $file_out_test
 
-    if diff $file_out $file_out_test; then
+    if diff $file_out $file_out_test > /dev/null; then
         duration=$SECONDS
         echo -e "\e[32mTEST PASSED\e[0m : $((duration / 60))m $((duration % 60))s"
     else
-        echo "\e[31mTest failed\e[0m"
+        duration=$SECONDS
+        echo -e "\e[31mTEST FAILED\e[0m : $((duration / 60))m $((duration % 60))s"
     fi
 
 done

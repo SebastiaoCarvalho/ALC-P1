@@ -10,7 +10,7 @@ class DepartEncoder(Encoder) :
         #print("DepartEncoder")
         for city in city_dict.keys():
             lits = [flight.get_id() for flight in flight_list if flight.get_departure_city() == city]
-            enc = CardEnc.equals(lits, bound=1, top_id=var_count, encoding=EncType.seqcounter)
+            enc = CardEnc.equals(lits, bound=1, top_id=var_count, encoding=EncType.totalizer)
             for clause in enc.clauses:
                 #print(clause)
                 solver.add_clause(clause)

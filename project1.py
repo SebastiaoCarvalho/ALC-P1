@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# alc24 - 6 - project1 
+
 from parsers.input_parser import parse_input
 from parsers.output_parser import parse_output
 from pysat.examples.rc2 import RC2

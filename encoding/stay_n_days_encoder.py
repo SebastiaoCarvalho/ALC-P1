@@ -17,9 +17,13 @@ class StayNDaysEncoder(Encoder) :
             for arrival in arrivals:
                 depart_date = arrival.get_day() + timedelta(days=city_dict[city].get_nights())
                 #print(arrival.get_id(), depart_date, arrival.get_day(), city_dict[city].get_nights())
+                disjunction = [-arrival.get_id()]
                 for depart in departs:
                     if depart_date != depart.get_day():
                         #print([-arrival.get_id(), -depart.get_id()])
                         solver.add_clause([-arrival.get_id(), -depart.get_id()]) # can only fly to other city after exactly n nights
-                    
+                    else :
+                        disjunction.append(depart.get_id())
+                if disjunction != [-arrival.get_id()]:
+                    solver.add_clause(disjunction)
         return var_count
