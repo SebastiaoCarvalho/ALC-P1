@@ -4,7 +4,7 @@ from domain.flight import Flight
 from domain.city import City
 from encoding.encoder import Encoder
 
-class InvalidBaseCity(Encoder):
+class InvalidBaseCityEncoder(Encoder):
 
         def encode(self, solver : RC2, flight_list : list[Flight], city_dict: dict[str, City], var_count: int) -> int:
             nights = [city_dict[city].get_nights() for city in city_dict.keys() if not city_dict[city].is_base_city()]

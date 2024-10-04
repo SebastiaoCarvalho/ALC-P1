@@ -9,10 +9,10 @@ class EndInBaseEncoder(Encoder):
         for city in city_dict.keys():
             if not city_dict[city].is_base_city():
                 continue
-            arrive_lits = [flight.get_id() for flight in flight_list if flight.get_arrival_city() == city]
-            total_lits  = [flight.get_id() for flight in flight_list if flight.get_arrival_city() != city]
-            for arrive_lit in arrive_lits:
-                for lit in total_lits:
-                    if flight_list[arrive_lit - 1].get_day() <= flight_list[lit - 1].get_day():
-                        solver.add_clause([-arrive_lit, -lit])
+            arrivals = [flight.get_id() for flight in flight_list if flight.get_arrival_city() == city]
+            flights  = [flight.get_id() for flight in flight_list if flight.get_arrival_city() != city]
+            for arrival in arrivals:
+                for flight in flights:
+                    if flight_list[arrival - 1].get_day() <= flight_list[flight - 1].get_day():
+                        solver.add_clause([-arrival, -flight])
         return var_count

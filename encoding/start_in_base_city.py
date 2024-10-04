@@ -10,10 +10,10 @@ class StartInBaseCity(Encoder):
         for city in city_dict.keys():
             if not city_dict[city].is_base_city():
                 continue
-            total_lits = [flight.get_id() for flight in flight_list if flight.get_departure_city() != city]
-            depart_lits = [flight.get_id() for flight in flight_list if flight.get_departure_city() == city]
-            for depart_lit in depart_lits:
-                for lit in total_lits:
-                    if flight_list[lit - 1].get_day() <= flight_list[depart_lit - 1].get_day():
-                        solver.add_clause([-lit, -depart_lit])
+            flights = [flight.get_id() for flight in flight_list if flight.get_departure_city() != city]
+            departs = [flight.get_id() for flight in flight_list if flight.get_departure_city() == city]
+            for depart in departs:
+                for flight in flights:
+                    if flight_list[flight - 1].get_day() <= flight_list[depart - 1].get_day():
+                        solver.add_clause([-flight, -depart])
         return var_count
