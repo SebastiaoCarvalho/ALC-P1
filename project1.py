@@ -8,11 +8,11 @@ from pysat.formula import WCNF
 from encoding.depart_encoder import DepartEncoder
 from encoding.arrival_encoder import ArrivalEncoder  
 from encoding.stay_n_days_encoder import StayNDaysEncoder
-from encoding.arrive_after_depart_encoder import ArriveAfterDepartEncoder
 from encoding.end_in_base_encoder import EndInBaseEncoder
 from encoding.start_in_base_city import StartInBaseCity
 from encoding.soft_encoder import SoftEncoder
 from encoding.invalid_flights_encoder import InvalidFlightsEncoder
+from encoding.invalid_base_city import InvalidBaseCity
 
 
 city_map, flight_list = parse_input()
@@ -38,6 +38,9 @@ encoder = SoftEncoder()
 var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
 encoder = InvalidFlightsEncoder()
+var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
+
+encoder = InvalidBaseCity()
 var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
 solution = solver.compute()
