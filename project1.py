@@ -12,6 +12,7 @@ from encoding.arrive_after_depart_encoder import ArriveAfterDepartEncoder
 from encoding.end_in_base_encoder import EndInBaseEncoder
 from encoding.start_in_base_city import StartInBaseCity
 from encoding.soft_encoder import SoftEncoder
+from encoding.invalid_flights_encoder import InvalidFlightsEncoder
 
 
 city_map, flight_list = parse_input()
@@ -36,6 +37,8 @@ var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 encoder = SoftEncoder()
 var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
+encoder = InvalidFlightsEncoder()
+var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 
 solution = solver.compute()
 if solution != None:
