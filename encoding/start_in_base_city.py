@@ -7,7 +7,6 @@ from pysat.card import CardEnc, EncType
 class StartInBaseCity(Encoder):
 
     def encode(self, solver : RC2, flight_list : list[Flight], city_dict: dict[str, City], var_count: int) -> int:
-        #print("StartInBaseCity")
         for city in city_dict.keys():
             if not city_dict[city].is_base_city():
                 continue
@@ -16,7 +15,5 @@ class StartInBaseCity(Encoder):
             for depart_lit in depart_lits:
                 for lit in total_lits:
                     if flight_list[lit - 1].get_day() <= flight_list[depart_lit - 1].get_day():
-                        #print([-lit, -depart_lit])
-                        #print(f"add clause ¬{flight_list[lit - 1]} ∨ ¬{flight_list[depart_lit - 1]}")
                         solver.add_clause([-lit, -depart_lit])
         return var_count

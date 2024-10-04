@@ -43,5 +43,3 @@ var_counter = encoder.encode(solver, flight_list, city_map, var_counter)
 solution = solver.compute()
 if solution != None:
     parse_output(solution, flight_list, city_map)
-else:
-    print("No solution found")
