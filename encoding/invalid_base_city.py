@@ -16,4 +16,9 @@ class InvalidBaseCity(Encoder):
                 for depart in departs:
                      if depart.get_day() + timedelta(days=total_nights) > flight_list[-1].get_day():
                          solver.add_clause([-depart.get_id()])
+                arrivals = [flight for flight in flight_list if flight.get_arrival_city() == city]
+                for arrival in arrivals:
+                    if arrival.get_day() - timedelta(days=total_nights) < flight_list[0].get_day():
+                        solver.add_clause([-arrival.get_id()])
+            return var_count
                     
